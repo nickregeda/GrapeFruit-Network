@@ -1,0 +1,68 @@
+.container{
+    padding: 15px 40px;
+}
+
+.userList{
+    margin: 15px 0px;
+    height: 120px;
+    display: flex;
+    background: rgba(234, 181, 188, 0.55);
+    border-radius: 5px;
+    /*border: solid 1px black;*/
+}
+.userList:hover {
+    background: rgba(234, 181, 188, 0.75);
+}
+
+.userPhoto {
+    align-self: center;
+    flex: 0 0 20%;
+    text-align: center;
+    /*border: solid 1px black;*/
+}
+
+.userInfo {
+    padding: 10px 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 80%;
+    /*border: solid 1px black;*/
+}
+
+img {
+    width: 80px;
+    border-radius: 5px;
+}
+
+.followButton {
+    cursor: pointer;
+    border: solid 1px white;
+    border-radius: 5px;
+    background: #f91a3fc4;
+    color: white;
+    outline: none;
+    width: 90px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.followButton:hover {
+    background: #f91a3fe1;
+}
+.followButton:active {
+    background: #f91a3f;
+}
+
+.pageNumbers {
+}
+
+.unselectedPage, .selectedPage {
+    width: 30px;
+    margin: 0px 5px;
+}
+
+.selectedPage {
+    background: #f91a3f;
+}
+

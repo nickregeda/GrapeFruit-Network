@@ -1,0 +1,28 @@
+html {
+    /*height: 100%*/
+}
+
+body {
+    /*height: 100%*/
+}
+
+.app-wrapper {
+    display: grid;
+    width: 1000px;
+    /*border: solid 1px black;*/
+    margin: 0 auto;
+    grid-gap: 3px;
+    grid-template-columns: 22% 78%;
+    /* grid-template-rows: 90px 600px; */
+}
+
+Header{
+    border-radius: 5px;
+}
+
+.app-wrapper-content {
+    border-radius: 5px;
+    /*grid-column: 2/4;*/
+    background: #ffaab828;
+    min-height: 700px;
+}
