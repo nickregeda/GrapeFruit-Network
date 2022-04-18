@@ -22,7 +22,6 @@ class UsersContainer extends React.Component {
     render = () => {
         return (
             <Users onPageChange={this.onPageChange}
-                   toggleFollowingProgress={this.props.toggleFollowingProgress}
                    unfollow={this.props.unfollow}
                    follow={this.props.follow}
                    {...this.props}
@@ -47,7 +46,6 @@ export default compose(
         {
             //actionCreaters
             setCurrentPage,
-            toggleIsFetching,
             //thunkCreaters
             getUsers,
             follow,

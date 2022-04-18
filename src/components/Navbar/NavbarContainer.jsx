@@ -5,17 +5,13 @@ import {connect} from "react-redux";
 class NavbarContainer extends React.Component {
     render() {
         return (
-            <Navbar
-                {...this.props}
-            />
+            <Navbar/>
         );
     }
 }
 
 let mapStateToProps = (state) => {
-    return {
-        id: state.auth.id,
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, {})(NavbarContainer);

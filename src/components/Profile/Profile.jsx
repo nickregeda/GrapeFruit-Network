@@ -1,6 +1,6 @@
 import s from './Profile.module.css'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import PostsContainer from "./Posts/PostsContainer";
 
 const Profile = (props) => {
 	return (
@@ -8,7 +8,7 @@ const Profile = (props) => {
 			<div className={s.bg_image}></div>
 			<div className={s.wrapper}>
 				<ProfileInfo profile={props.profile} status={props.status}/>
-				<MyPostsContainer />
+				<PostsContainer />
 			</div>
 		</div>
 	);

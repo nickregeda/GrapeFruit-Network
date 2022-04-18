@@ -1,10 +1,10 @@
 import s from './MyPosts.module.css'
-import Post from './Post/Post';
+import MyPost from './MyPost/MyPost';
 import React from "react";
 
 const MyPosts = (props) => {
-    let postsElements = props.posts.map(post => <Post key={post.id} message={post.message} date={post.date}
-                                                      likesCount={post.likesCount}/>);
+    let postsElements = props.posts.map(post => <MyPost key={post.id} message={post.message} date={post.date}
+                                                        likesCount={post.likesCount}/>);
     let newPostElement = React.createRef();
 
     let onAddPost = () => {

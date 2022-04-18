@@ -7,7 +7,6 @@ import Preloader from "../common/preloader/preloader";
 
 const Users = (props) => {
     let usersElements = props.users.map(u => <User key={u.id} id={u.id}
-                                                   toggleFollowingProgress={props.toggleFollowingProgress}
                                                    photoURL={u.photos.small != null ? u.photos.small : avatar}
                                                    followed={u.followed}
                                                    name={u.name}

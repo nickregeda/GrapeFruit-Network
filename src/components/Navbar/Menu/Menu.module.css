@@ -1,0 +1,40 @@
+.menu_item {
+    display: block;
+    text-decoration: none;
+    color: white;
+
+    border-radius: 5px;
+    border: solid 1px white;
+    background: rgba(249, 26, 63, 0.84);
+
+    width: 70%;
+    height: 30px;
+    box-sizing: border-box;
+
+    padding: 2px 0px 0px 0px;
+    margin: 30px auto;
+
+    transition: all 0.1s;
+}
+
+.menu_item:last-child {
+    margin-top: 50px;
+}
+
+.menu_item:first-child {
+    margin-top: 40px;
+}
+
+.menu_item:hover {
+    background: rgb(249, 26, 63);
+    transform: scale(1.05);
+}
+
+.menu_item:active {
+    background: rgb(201, 15, 47);
+}
+
+.menu_item[class='active'] {
+    background: rgb(249, 26, 63);
+    transform: scale(1.05);
+}

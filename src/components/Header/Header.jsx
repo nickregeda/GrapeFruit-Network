@@ -2,7 +2,6 @@ import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import avatar from '../../img/img_avatar.png';
 import Preloader from "../common/preloader/preloader";
-import {authAPI} from "../../api/api";
 
 const Header = (props) => {
     let onLogOut = () => {

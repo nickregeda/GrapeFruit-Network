@@ -1,7 +1,7 @@
-import s from './Post.module.css';
+import s from './MyPost.module.css';
 import avatar from '../../../../img/img_avatar.png';
 
-const Post = (props) => {
+const MyPost = (props) => {
 	return (
 		<div className={s.item}>
 			<img className={s.profile_photo} src={avatar}></img>
@@ -14,4 +14,4 @@ const Post = (props) => {
 	);
 }
 
-export default Post;
+export default MyPost;

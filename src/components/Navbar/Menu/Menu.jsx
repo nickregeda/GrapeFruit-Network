@@ -4,12 +4,12 @@ import {NavLink} from "react-router-dom";
 const Menu = (props) => {
     return (
         <div className={s.menuBlock}>
-            <NavLink to='/myprofile'>Profile</NavLink>
-            <NavLink to='/dialogs'>Messages</NavLink>
-            <NavLink to='/users'>Users</NavLink>
-            <NavLink to='/news'>News</NavLink>
-            <NavLink to='/music'>Music</NavLink>
-            <NavLink to='/settings'>Settings</NavLink>
+            <NavLink className={s.menu_item} to='/myprofile'>Profile</NavLink>
+            <NavLink className={s.menu_item} to='/dialogs'>Messages</NavLink>
+            <NavLink className={s.menu_item} to='/users'>Users</NavLink>
+            <NavLink className={s.menu_item} to='/news'>News</NavLink>
+            <NavLink className={s.menu_item} to='/music'>Music</NavLink>
+            <NavLink className={s.menu_item} to='/settings'>Settings</NavLink>
         </div>
     );
 }

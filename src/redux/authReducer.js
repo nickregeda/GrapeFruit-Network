@@ -18,7 +18,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                // profile: action.profile,
                 isAuth: true,
             }
         case SET_AUTH_USER_PROFILE:
