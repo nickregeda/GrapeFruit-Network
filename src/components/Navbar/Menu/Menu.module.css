@@ -34,7 +34,7 @@
     background: rgb(201, 15, 47);
 }
 
-.menu_item[class='active'] {
+.menu_item:focus {
     background: rgb(249, 26, 63);
     transform: scale(1.05);
 }

@@ -2,6 +2,8 @@ import React from "react";
 import SubscriptionsPage from "./SubscriptionsPage";
 import {connect} from "react-redux";
 import {follow, unfollow, getFriends, setCurrentPage} from "../../redux/usersReducer";
+import {compose} from "redux";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 
 class SubscriptionsPageContainer extends React.Component {
     componentDidMount() {
@@ -31,4 +33,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getFriends, setCurrentPage, follow, unfollow})(SubscriptionsPageContainer);
+export default compose(
+    connect(mapStateToProps, {getFriends, setCurrentPage, follow, unfollow}),
+    withAuthRedirect
+)(SubscriptionsPageContainer);

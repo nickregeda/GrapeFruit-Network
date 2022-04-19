@@ -25,7 +25,11 @@
     margin-bottom: 15px;
 }
 
-.profile_photo {
+.profile_photo, .my_profile_photo {
     width: 150px;
     border-radius: 5px;
+}
+
+.my_profile_photo {
+    border: solid 3px #FA4A68;
 }
