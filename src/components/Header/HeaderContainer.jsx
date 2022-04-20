@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
 import {getAuth, logOutUser} from "../../redux/authReducer";
+import {getFriends, getNavbarFriends} from "../../redux/usersReducer";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {

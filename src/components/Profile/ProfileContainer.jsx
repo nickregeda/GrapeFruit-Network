@@ -5,12 +5,20 @@ import {getProfile, getStatus} from "../../redux/profileReducer";
 import {useParams} from "react-router-dom";
 import {compose} from "redux";
 import {Navigate} from "react-router-dom";
+import {follow, unfollow} from "../../redux/usersReducer";
 
 class ProfileContainer extends React.Component {
+
     componentDidMount() {
         let userId = this.props.params.userId;
         this.props.getProfile(userId);
         this.props.getStatus(userId);
+    }
+
+    componentDidUpdate = (prevProps, prevState) => {
+        if (prevProps.params.userId !== this.props.params.userId) {
+            this.componentDidMount();
+        }
     }
 
     render() {
@@ -19,7 +27,7 @@ class ProfileContainer extends React.Component {
             //для проверки убрать withAuthRedirect в MyProfileContainer
         }
         return (
-            <Profile {...this.props}/>
+            <Profile {...this.props} follow={this.props.follow} unfollow={this.props.unfollow}/>
         );
     }
 }
@@ -29,6 +37,10 @@ let mapStateToProps = (state) => {
         id: state.auth.id,
         profile: state.profilePage.profile,
         status: state.profilePage.status,
+        users: state.usersPage.users,
+        friends: state.usersPage.friends,
+        navbarFriends: state.usersPage.navbarFriends,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -42,6 +54,6 @@ export const withRouter = (WrappedComponent/*: typeof React.Component*/) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getProfile, getStatus}),
+    connect(mapStateToProps, {getProfile, getStatus, follow, unfollow}),
     withRouter
 )(ProfileContainer);

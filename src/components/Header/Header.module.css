@@ -26,7 +26,7 @@
 }
 
 .loginBlock {
-    flex: 0 0 14%;
+    flex: 0 0 20%;
     color: white;
 }
 
@@ -37,16 +37,37 @@
 }
 
 .userAuthPhoto {
+    border: solid 2px white;
     display: block;
     width: 40px;
 }
 
+.userLogin {
+}
+
 .loginBlock a {
+    display: block;
     color: white;
     text-decoration: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .loginBlock a:hover {
     color: rgba(255, 255, 255, 0.82);
+}
+
+.logout_pic {
+    cursor: pointer;
+    padding: 2px;
+    background: white;
+    width: 35px;
+}
+
+.logout_pic:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.logout_pic:active {
+    background: rgba(255, 255, 255, 0);
 }

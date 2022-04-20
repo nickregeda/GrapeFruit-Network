@@ -7,7 +7,8 @@ const Profile = (props) => {
         <div>
             <div className={s.bg_image}></div>
             <div className={s.wrapper}>
-                <ProfileInfo {...props} updateStatus={props.updateStatus}/>
+                <ProfileInfo {...props} updateStatus={props.updateStatus} follow={props.follow}
+                             unfollow={props.unfollow}/>
                 <PostsContainer/>
             </div>
         </div>

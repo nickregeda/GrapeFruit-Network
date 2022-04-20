@@ -1,7 +1,11 @@
-.item{
+.item {
     /*margin: 3px 5px;*/
     font-size: 12px;
+    width: 65px;
+    margin: 4px 0px;
 }
+
 .item div {
-    text-align: left;
+    text-align: center;
+    word-wrap: break-word;
 }

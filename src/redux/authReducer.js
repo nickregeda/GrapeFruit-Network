@@ -2,6 +2,7 @@ import {authAPI, profileAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 const SET_AUTH_USER_PROFILE = 'SET-AUTH-USER-PROFILE';
+const LOGOUT_USER = 'LOGOUT_USER';
 
 let initialState = {
     id: null,
@@ -25,6 +26,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile,
             }
+        case LOGOUT_USER:
+            return {
+                ...state,
+                isAuth: false,
+            }
         default:
             return state;
     }
@@ -35,6 +41,7 @@ export default authReducer;
 //actionCreaters
 export const setAuthUserData = (data) => ({type: SET_USER_DATA, data,});
 export const setAuthUserProfile = (profile) => ({type: SET_AUTH_USER_PROFILE, profile,});
+export const logoutUser = () => ({type: LOGOUT_USER});
 
 //thunkCreaters
 export const getAuth = () => {
@@ -60,7 +67,7 @@ export const logOutUser = () => {
         authAPI.logOutUser().then(
             response => {
                 if (response.data.resultCode === 0) {
-                    alert('log out done')
+                    dispatch(logoutUser());
                 } else {
                     alert('error')
                 }
@@ -73,7 +80,7 @@ export const logInUser = (email, password, rememberMe) => {
         authAPI.logInUser(email, password, rememberMe).then(
             response => {
                 if (response.data.resultCode === 0) {
-                    alert("Authorization was successful!");
+                    dispatch(getAuth())
                 } else {
                     alert("We have next errors: " + response.data.messages);
                 }

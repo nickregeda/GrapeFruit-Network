@@ -1,11 +1,15 @@
 import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
 import avatar from '../../img/img_avatar.png';
+import logoutPic from '../../img/logout_pic.png';
 import Preloader from "../common/preloader/preloader";
 
 const Header = (props) => {
     let onLogOut = () => {
-        props.logInUser();
+        let choice = window.confirm("Are you shure?");
+        if (choice) {
+            props.logInUser();
+        }
     }
 
     if (!props.profile && props.isAuth === true) {
@@ -28,9 +32,9 @@ const Header = (props) => {
                                 <img className={s.userAuthPhoto}
                                      src={props.profile.photos.small != null ? props.profile.photos.small : avatar}
                                      alt=""/>
-                                <div>{props.login}</div>
+                                <div className={s.userLogin}>{props.login}</div>
+                                <img className={s.logout_pic} onClick={onLogOut} src={logoutPic}/>
                             </div>
-                            <button onClick={onLogOut}>log out</button>
                         </>
                         :
                         <NavLink to={'/login'}>Login</NavLink>

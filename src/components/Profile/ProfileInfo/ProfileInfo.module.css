@@ -1,16 +1,20 @@
-.flex_profile_info {
+.flex_profile_info, .flex_myprofile_info {
     /*border: solid 1px black;*/
     display: flex;
+    flex-wrap: wrap;
     align-items: start;
     color: rgb(73, 73, 73);
-    margin: 0px 0px 40px 0px;
 }
 
-.flex_profile_info div:nth-child(1) {
+.flex_myprofile_info {
+    margin-bottom: 40px;
+}
+
+.flex_profile_info div:nth-child(1), .flex_myprofile_info div:nth-child(1) {
     flex: 0 0 25%;
 }
 
-.flex_profile_info div:nth-child(2) {
+.flex_profile_info div:nth-child(2), .flex_myprofile_info div:nth-child(2) {
     flex: 0 0 50%;
 }
 
@@ -18,7 +22,7 @@
     margin-bottom: 5px;
 }
 
-.username_info {
+.username {
     /*border: solid 1px black;*/
     font-weight: 600;
     font-size: 20px;
@@ -32,4 +36,27 @@
 
 .my_profile_photo {
     border: solid 3px #FA4A68;
+}
+
+.toggleFollowProsileButton {
+    cursor: pointer;
+    display: block;
+    border: solid 1px white;
+    border-radius: 5px;
+    background: #f91a3fc4;
+    color: white;
+    outline: none;
+    width: 150px;
+    height: 35px;
+    font-size: 16px;
+    margin: 10px 0px 40px 0px;
+
+}
+
+.toggleFollowProsileButton:hover {
+    background: #f91a3fe1;
+}
+
+.toggleFollowProsileButton:active {
+    background: #f91a3f;
 }
