@@ -1,8 +1,8 @@
-.container{
+.container {
     padding: 15px 40px;
 }
 
-.userList{
+.userList {
     margin: 15px 0px;
     height: 120px;
     display: flex;
@@ -10,6 +10,7 @@
     border-radius: 5px;
     /*border: solid 1px black;*/
 }
+
 .userList:hover {
     background: rgba(234, 181, 188, 0.75);
 }
@@ -28,6 +29,21 @@
     justify-content: space-between;
     flex: 0 0 80%;
     /*border: solid 1px black;*/
+}
+
+.name_status_info {
+    flex: 0 0 65%;
+    /*border: solid 1px black;*/
+    word-wrap: break-word;
+}
+
+.name_status_info div {
+    max-width: 250px;
+}
+
+.location_info {
+    flex: 0 0 35%;
+    word-wrap: break-word;
 }
 
 img {
@@ -50,6 +66,7 @@ img {
 .followButton:hover {
     background: #f91a3fe1;
 }
+
 .followButton:active {
     background: #f91a3f;
 }

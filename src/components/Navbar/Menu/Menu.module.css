@@ -1,4 +1,4 @@
-.menu_item {
+.menu_item, .active_menu_item {
     display: block;
     text-decoration: none;
     color: white;
@@ -17,11 +17,11 @@
     transition: all 0.1s;
 }
 
-.menu_item:last-child {
+.menu_item:last-child, .active_menu_item:last-child {
     margin-top: 50px;
 }
 
-.menu_item:first-child {
+.menu_item:first-child, .active_menu_item:first-child {
     margin-top: 40px;
 }
 
@@ -34,7 +34,7 @@
     background: rgb(201, 15, 47);
 }
 
-.menu_item:focus {
+.active_menu_item {
     background: rgb(249, 26, 63);
     transform: scale(1.05);
 }

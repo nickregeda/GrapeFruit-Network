@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import s from './Login.module.css'
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import loginFormSchema from "../FormValidation/LoginFormSchema";
+import {useNavigate, Navigate} from 'react-router-dom'
 
 const LoginForm = (props) => {
     return (
@@ -28,6 +29,14 @@ const LoginForm = (props) => {
 }
 
 const Login = (props) => {
+    let navigate = useNavigate();
+    useEffect(() => {
+        if (navigate && props.isAuth) {
+            navigate(-1)
+        } else if (!navigate && props.isAuth) {
+            <Navigate to='/myprofile'/>
+        }
+    })
     return (
         <div className={s.loginBlock}>
             <h1>Login</h1>

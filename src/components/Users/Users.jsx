@@ -21,7 +21,7 @@ const Users = (props) => {
         <div className={s.container}>
             <div className={s.pageNumbers}>
                 <Pagination count={pagesCount}
-                            page={props.currentPage}
+                            page={props.currentUsersPage}
                             onChange={(_, num) => {
                                 props.onPageChange(num)
                             }}

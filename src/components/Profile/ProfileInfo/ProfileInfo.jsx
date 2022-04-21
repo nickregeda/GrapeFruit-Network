@@ -4,14 +4,13 @@ import Preloader from "../../common/preloader/preloader";
 import Status from "./Status/Status";
 
 const ProfileInfo = (props) => {
-    debugger
     if (!props.profile) {
         return <Preloader/>;
     }
     let toggleFollowUser = () => {
         if (props.friends.some(f => f.id === props.profile.userId && f.followed) ||
-            props.users.some(u => u.id === props.profile.userId && u.followed) ||
-            props.navbarFriends.some(nf => nf.id === props.profile.userId && nf.followed)
+            props.users.some(u => u.id === props.profile.userId && u.followed)/* ||
+            props.navbarFriends.some(nf => nf.id === props.profile.userId && nf.followed)*/
         ) {
             props.unfollow(props.profile.userId)
         } else {
@@ -42,8 +41,8 @@ const ProfileInfo = (props) => {
                     className={s.toggleFollowProsileButton}
                     onClick={toggleFollowUser}>
                     {props.friends.some(f => f.id === props.profile.userId && f.followed) ||
-                    props.users.some(u => u.id === props.profile.userId && u.followed) ||
-                    props.navbarFriends.some(nf => nf.id === props.profile.userId && nf.followed) ? 'Unfollow' : 'Follow'}</button>
+                    props.users.some(u => u.id === props.profile.userId && u.followed)/* ||
+                    props.navbarFriends.some(nf => nf.id === props.profile.userId && nf.followed)*/ ? 'Unfollow' : 'Follow'}</button>
                 :
                 <></>
             }

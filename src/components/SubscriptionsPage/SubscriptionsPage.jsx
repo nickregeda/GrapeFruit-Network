@@ -22,7 +22,7 @@ const SubscriptionsPage = (props) => {
         <div className={s.container}>
             <div className={s.pageNumbers}>
                 <Pagination count={pagesCount}
-                            page={props.currentPage}
+                            page={props.currentFriendsPage}
                             onChange={(_, num) => {
                                 props.onPageChange(num)
                             }}

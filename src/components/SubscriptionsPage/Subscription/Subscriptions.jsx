@@ -24,11 +24,11 @@ const Subscriptions = (props) => {
                 </div>
             </div>
             <div className={s.userInfo}>
-                <div>
+                <div className={s.name_status_info}>
                     <div>{props.name}</div>
-                    <div>"{props.status}"</div>
+                    <div className={s.status}>"{props.status}"</div>
                 </div>
-                <div>
+                <div className={s.location_info}>
                     <div>{"props.location.country"}</div>
                     <div>{"props.location.city"}</div>
                 </div>

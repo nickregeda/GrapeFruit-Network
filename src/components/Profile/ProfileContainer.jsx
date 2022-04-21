@@ -39,7 +39,7 @@ let mapStateToProps = (state) => {
         status: state.profilePage.status,
         users: state.usersPage.users,
         friends: state.usersPage.friends,
-        navbarFriends: state.usersPage.navbarFriends,
+        // navbarFriends: state.usersPage.navbarFriends,
         followingInProgress: state.usersPage.followingInProgress
     }
 }

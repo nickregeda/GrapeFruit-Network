@@ -1,10 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Login from "./Login";
 import {connect} from "react-redux";
 import {logInUser} from "../../redux/authReducer";
-import {Navigate} from "react-router-dom";
-import MyProfileContainer from "../Profile/MyProfileContainer";
-import Navbar from "../Navbar/Navbar";
+import {Navigate, useNavigate} from "react-router-dom";
 
 class LoginContainer extends React.Component {
     // componentDidMount() {
@@ -17,12 +15,12 @@ class LoginContainer extends React.Component {
     // }
 
     render() {
-        if (!this.props.isAuth) {
-            return <Login logInUser={this.props.logInUser}/>
-        } else {
-            // return <Navigate to='/myprofile'/>
-            return <MyProfileContainer/>
-        }
+        // if (!this.props.isAuth) {
+        return <Login {...this.props} logInUser={this.props.logInUser}/>
+        // }
+        // else {
+        //     return <Navigate to='/myprofile'/>
+        // }
     }
 }
 

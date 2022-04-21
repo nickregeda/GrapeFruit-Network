@@ -1,7 +1,6 @@
 import s from './NavbarSubscriptions.module.css';
 import NavbarSubscription from "./NavbarSubscription/NavbarSubscription";
 import {NavLink} from "react-router-dom";
-import Preloader from "../../common/preloader/preloader";
 
 const NavbarSubscriptions = (props) => {
     // debugger
@@ -10,13 +9,16 @@ const NavbarSubscriptions = (props) => {
                                                                           photo={friend.photos.small}/>);
 
     return (
-        <div className={s.friendsBlock}>
-            <NavLink className={s.subscriptionTitle}
-                     to='/myfriends'>Subscriptions</NavLink>
-            <div className={s.flexFriendsBlock}>
-                {friendsElements}
+        props.isNavSubsHide ?
+            <></>
+            :
+            <div className={s.friendsBlock}>
+                <NavLink className={s.subscriptionTitle}
+                         to='/myfriends'>Subscriptions</NavLink>
+                <div className={s.flexFriendsBlock}>
+                    {friendsElements}
+                </div>
             </div>
-        </div>
     );
 }
 

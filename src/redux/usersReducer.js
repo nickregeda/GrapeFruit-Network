@@ -1,11 +1,12 @@
 import {usersAPI} from "../api/api";
 
 const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_CURRENT_USERS_PAGE = 'SET_CURRENT_USERS_PAGE';
+const SET_CURRENT_FRIENDS_PAGE = 'SET_CURRENT_FRIENDS_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_FRIENDS = 'SET_FRIENDS';
 const SET_TOTAL_FRIENDS_COUNT = 'SET_TOTAL_FRIENDS_COUNT';
-const SET_NAVBAR_FRIENDS = 'SET_NAVBAR_FRIENDS';
+// const SET_NAVBAR_FRIENDS = 'SET_NAVBAR_FRIENDS';
 
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS';
@@ -16,11 +17,12 @@ let initialState = {
     pageSize: 9,
     totalUsersCount: 0,
     totalFriendsCount: 0,
-    currentPage: 1,
+    currentUsersPage: 1,
+    currentFriendsPage: 1,
     isFetching: true,
     followingInProgress: [],
     friends: [],
-    navbarFriends: [],
+    // navbarFriends: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -35,15 +37,20 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 friends: action.friends,
             }
-        case SET_NAVBAR_FRIENDS:
+        // case SET_NAVBAR_FRIENDS:
+        //     return {
+        //         ...state,
+        //         navbarFriends: action.friends
+        //     }
+        case SET_CURRENT_USERS_PAGE:
             return {
                 ...state,
-                navbarFriends: action.friends
+                currentUsersPage: action.page,
             }
-        case SET_CURRENT_PAGE:
+        case SET_CURRENT_FRIENDS_PAGE:
             return {
                 ...state,
-                currentPage: action.page,
+                currentFriendsPage: action.page,
             }
         case SET_TOTAL_USERS_COUNT:
             return {
@@ -73,10 +80,10 @@ const usersReducer = (state = initialState, action) => {
                         return f;
                     }
                 }),
-            //     friends: state.friends.some(f => f.id === action.userID) ?
-            //         state.friends.filter(f => f.id !== action.userID)
-            //         :
-            //         [...state.friends, state.users.find(u => u.id === action.userID)],
+                //     friends: state.friends.some(f => f.id === action.userID) ?
+                //         state.friends.filter(f => f.id !== action.userID)
+                //         :
+                //         [...state.friends, state.users.find(u => u.id === action.userID)],
             }
         case TOGGLE_IS_FETCHING:
             return {
@@ -97,11 +104,12 @@ export default usersReducer;
 
 //actionCreaters
 export const setUsers = (users) => ({type: SET_USERS, users,});
-export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page,});
+export const setCurrentUsersPage = (page) => ({type: SET_CURRENT_USERS_PAGE, page,});
+export const setCurrentFriendsPage = (page) => ({type: SET_CURRENT_FRIENDS_PAGE, page,});
 export const setTotalUsersCount = (usersCount) => ({type: SET_TOTAL_USERS_COUNT, usersCount,});
 
 export const setFriends = (friends) => ({type: SET_FRIENDS, friends});
-export const setNavbarFriends = (friends) => ({type: SET_NAVBAR_FRIENDS, friends});
+// export const setNavbarFriends = (friends) => ({type: SET_NAVBAR_FRIENDS, friends});
 export const setTotalFriendsCount = (totalCount) => ({type: SET_TOTAL_FRIENDS_COUNT, totalCount});
 
 export const toggleFollowUser = (userID) => ({type: TOGGLE_FOLLOW, userID,});
@@ -132,16 +140,16 @@ export const getFriends = (pageSize, currentPage) => {
         )
     }
 }
-export const getNavbarFriends = () => {
-    return (dispatch) => {
-        usersAPI.getFriends(9, 1).then(
-            data => {
-                debugger
-                dispatch(setNavbarFriends(data.items))
-            }
-        )
-    }
-}
+// export const getNavbarFriends = () => {
+//     return (dispatch) => {
+//         usersAPI.getFriends(9, 1).then(
+//             data => {
+//                 debugger
+//                 dispatch(setNavbarFriends(data.items))
+//             }
+//         )
+//     }
+// }
 
 export const unfollow = (userId) => {
     return (dispatch) => {
