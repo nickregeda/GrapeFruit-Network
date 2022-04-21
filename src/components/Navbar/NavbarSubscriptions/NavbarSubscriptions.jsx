@@ -3,7 +3,6 @@ import NavbarSubscription from "./NavbarSubscription/NavbarSubscription";
 import {NavLink} from "react-router-dom";
 
 const NavbarSubscriptions = (props) => {
-    // debugger
     let friendsElements = props.friends.map(friend => <NavbarSubscription key={friend.id} id={friend.id}
                                                                           name={friend.name}
                                                                           photo={friend.photos.small}/>);

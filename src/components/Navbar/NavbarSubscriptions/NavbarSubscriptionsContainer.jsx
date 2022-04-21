@@ -1,13 +1,12 @@
 import React from "react";
 import NavbarSubscriptions from "./NavbarSubscriptions";
 import {connect} from "react-redux";
-import {getFriends/*, getNavbarFriends*/} from "../../../redux/usersReducer";
+import {getFriends} from "../../../redux/usersReducer";
 import {compose} from "redux";
 
 class NavbarSubscriptionsContainer extends React.Component {
     componentDidMount() {
         if (this.props.isAuth) {
-            // this.props.getNavbarFriends();
             this.props.getFriends();
         }
     }
@@ -36,7 +35,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {/*getNavbarFriends,*/ getFriends}),
+    connect(mapStateToProps, {getFriends}),
 )
 (NavbarSubscriptionsContainer);
 

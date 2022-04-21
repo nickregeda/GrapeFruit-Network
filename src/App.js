@@ -6,7 +6,6 @@ import {Routes, Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import MyProfileContainer from "./components/Profile/MyProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import LoginContainer from "./components/Login/LoginContainer";
@@ -19,9 +18,8 @@ const App = (props) => {
             <NavbarContainer/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/myprofile/*' element={<MyProfileContainer/>}/>
                     <Route path='/profile/:userId' element={<ProfileContainer/>}/>
-                    <Route path='/profile/*' element={<ProfileContainer/>}/>
+                    <Route path='/profile/' element={<ProfileContainer/>}/>
                     <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                     <Route path="/myfriends/*" element={<MyFriendsPageContainer/>}/>
                     <Route path="/users/*" element={<UsersContainer/>}/>

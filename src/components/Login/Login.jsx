@@ -34,7 +34,7 @@ const Login = (props) => {
         if (navigate && props.isAuth) {
             navigate(-1)
         } else if (!navigate && props.isAuth) {
-            <Navigate to='/myprofile'/>
+            <Navigate to='/profile'/>
         }
     })
     return (
@@ -56,6 +56,7 @@ const Login = (props) => {
                 onSubmit={(values) => {
                     console.log(values)
                     props.logInUser(values.email, values.password, values.rememberMe);
+                    navigate('/profile', {replace: true})
                 }}
                 validationSchema={loginFormSchema}>
                 <LoginForm/>

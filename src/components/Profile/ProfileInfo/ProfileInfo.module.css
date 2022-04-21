@@ -10,6 +10,10 @@
     margin-bottom: 40px;
 }
 
+.space_instead_button {
+    min-height: 40px;
+}
+
 .flex_profile_info div:nth-child(1), .flex_myprofile_info div:nth-child(1) {
     flex: 0 0 25%;
 }

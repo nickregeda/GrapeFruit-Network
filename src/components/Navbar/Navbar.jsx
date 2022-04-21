@@ -1,6 +1,6 @@
 import s from './Navbar.module.css';
-import Menu from "./Menu/Menu";
 import MyFriendsContainer from "./NavbarSubscriptions/NavbarSubscriptionsContainer";
+import Menu from "./Menu/Menu";
 
 const Navbar = (props) => {
     return (

@@ -30,6 +30,9 @@ class Status extends React.Component {
     }
 
     render() {
+        if (this.props.myId !== this.props.userId) {
+            return <div>{this.props.status}</div>
+        }
         return (
             <div>
                 {this.state.editMode ?
