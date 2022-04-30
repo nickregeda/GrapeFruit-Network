@@ -6,7 +6,7 @@ const Post = (props) => {
 		<div className={s.item}>
 			<img className={s.profile_photo} src={avatar}></img>
 			<div>
-				<div>{props.message}</div>
+				<div className={s.postText}>{props.message}</div>
 				<div className={s.post_date}>{props.date}</div>
 				<div className={s.post_likesCount}>{'👍' + ' ' + props.likesCount}</div>
 			</div>

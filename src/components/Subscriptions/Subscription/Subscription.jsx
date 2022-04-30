@@ -2,7 +2,7 @@ import s from '../../Users/Users.module.css';
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-const Subscriptions = (props) => {
+const Subscription = (props) => {
     let toggleFollowUser = () => {
         if (props.followed) {
             props.unfollow(props.id);
@@ -37,4 +37,4 @@ const Subscriptions = (props) => {
     );
 }
 
-export default Subscriptions;
+export default Subscription;

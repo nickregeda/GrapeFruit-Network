@@ -15,14 +15,17 @@ class ProfileContainer extends React.Component {
         }
         this.props.getProfile(userId);
         this.props.getStatus(userId);
+
     }
 
     componentDidUpdate = (prevProps, prevState) => {
         if (prevProps.params.userId !== this.props.params.userId) {
             this.componentDidMount();
+            //для перехода по страницам подписок с NavbarSubscriptions
         }
         if (prevProps.id !== this.props.id) {
             this.componentDidMount();
+            //для ререндеринга компоненты, в случае, если при загрузке компоненты не успел прийти id из auth
         }
     }
 
@@ -55,6 +58,6 @@ export const withRouter = (WrappedComponent/*: typeof React.Component*/) => {
 }
 
 export default compose(
-    withRouter,
     connect(mapStateToProps, {getProfile, getStatus, updateStatus}),
+    withRouter,
 )(ProfileContainer);

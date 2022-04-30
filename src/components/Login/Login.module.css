@@ -65,3 +65,9 @@ input[type='checkbox'] {
 .loginButton:active {
     background: #f91a3f;
 }
+
+.captcha {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}

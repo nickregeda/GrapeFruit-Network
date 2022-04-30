@@ -1,11 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    setCurrentPage,
-    toggleIsFetching, toggleFollowingProgress, getUsers, follow, unfollow, setCurrentUsersPage
+    getUsers, follow, unfollow, setCurrentUsersPage
 } from '../../redux/usersReducer';
 import Users from './Users';
-import withAuthRedirect from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class UsersContainer extends React.Component {

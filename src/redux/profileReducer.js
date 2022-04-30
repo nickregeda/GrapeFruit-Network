@@ -1,10 +1,8 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE'
 const SET_USER_STATUS = 'SET_USER_STATUS';
-// const SET_USER_PHOTO = 'SET_USER_PHOTO';
 
 let initialState = {
     posts: [
@@ -30,10 +28,8 @@ let initialState = {
             likesCount: 11
         },
     ],
-    newPostText: "",
     profile: null,
     status: '',
-    photoURL: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -41,19 +37,13 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST:
             let newPost = {
                 id: 5,
-                message: state.newPostText,
+                message: action.message,
                 date: "01.01.2001",
                 likesCount: 0
             };
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: '',
-            }
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText,
             }
         case SET_USER_PROFILE:
             return {
@@ -65,11 +55,6 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status,
             }
-        // case SET_USER_PHOTO:
-        //     return {
-        //         ...state,
-        //         photoURL: action.photoURL,
-        //     }
         default:
             return state;
     }
@@ -78,11 +63,9 @@ const profileReducer = (state = initialState, action) => {
 export default profileReducer;
 
 //actionCreaters
-export const addPost = () => ({type: ADD_POST})
-export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPost = (message) => ({type: ADD_POST, message})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status});
-// export const setUserPhoto = (photoURL) => ({type: SET_USER_PHOTO, photoURL});
 
 //thunkCreaters
 export const getProfile = (userId) => {
@@ -113,14 +96,3 @@ export const updateStatus = (status) => {
         )
     }
 }
-// export const updatePhoto = (photoURL) => {
-//     return (dispatch) => {
-//         profileAPI.updatePhoto(photoURL).then(
-//             response => {
-//                 if (response.data.resultCode === 0) {
-//                     dispatch(setUserPhoto(photoURL));
-//                 }
-//             }
-//         )
-//     }
-// }

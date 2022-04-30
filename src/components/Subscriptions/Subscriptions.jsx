@@ -3,17 +3,17 @@ import s from "../Users/Users.module.css";
 import Pagination from "@mui/material/Pagination";
 import Preloader from "../common/preloader/preloader";
 import React from "react";
-import Subscriptions from "./Subscription/Subscriptions";
+import Subscription from "./Subscription/Subscription";
 
-const SubscriptionsPage = (props) => {
-    let friendsElements = props.friends.map(f => <Subscriptions key={f.id} id={f.id}
-                                                                photoURL={f.photos.small != null ? f.photos.small : avatar}
-                                                                followed={f.followed}
-                                                                name={f.name}
-                                                                followingInProgress={props.followingInProgress}
-                                                                status={f.status}
-                                                                unfollow={props.unfollow}
-                                                                follow={props.follow}/>);
+const Subscriptions = (props) => {
+    let friendsElements = props.friends.map(f => <Subscription key={f.id} id={f.id}
+                                                               photoURL={f.photos.small != null ? f.photos.small : avatar}
+                                                               followed={f.followed}
+                                                               name={f.name}
+                                                               followingInProgress={props.followingInProgress}
+                                                               status={f.status}
+                                                               unfollow={props.unfollow}
+                                                               follow={props.follow}/>);
 
 
     let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
@@ -37,4 +37,4 @@ const SubscriptionsPage = (props) => {
         </div>
     );
 }
-export default SubscriptionsPage;
+export default Subscriptions;

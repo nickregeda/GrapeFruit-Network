@@ -23,7 +23,9 @@ const LoginForm = (props) => {
                 <Field type={'checkbox'} name={'rememberMe'}/>
                 <label htmlFor={'rememberMe'}>Remember me</label>
             </div>
-            <button className={s.loginButton} type={'submit'}>Log in</button>
+            <button disabled={props.isSubmitting} type={'submit'} className={s.loginButton}>Log in</button>
+            {props.status ? <div className={s.errorMes}>{props.status}</div> : null}
+            {props.captcha ? <img className={s.captcha} src={props.captcha} alt=""/> : null}
         </Form>
     );
 }
@@ -33,8 +35,6 @@ const Login = (props) => {
     useEffect(() => {
         if (navigate && props.isAuth) {
             navigate(-1)
-        } else if (!navigate && props.isAuth) {
-            <Navigate to='/profile'/>
         }
     })
     return (
@@ -53,13 +53,21 @@ const Login = (props) => {
                     }
                     return errors;
                 }}
-                onSubmit={(values) => {
+                onSubmit={(values, actions) => {
                     console.log(values)
-                    props.logInUser(values.email, values.password, values.rememberMe);
-                    navigate('/profile', {replace: true})
+                    actions.setSubmitting(true);
+                    props.logInUser(values.email, values.password, values.rememberMe, actions.setStatus, actions.setSubmitting)
                 }}
                 validationSchema={loginFormSchema}>
-                <LoginForm/>
+                {
+                    ({status, isSubmitting}) => (
+                        status === "0" ?
+                            // navigate('/profile', {replace: true})
+                            <Navigate to={'/profile'}/>
+                            :
+                            <LoginForm captcha={props.captchaURL} status={status} isSubmitting={isSubmitting}/>
+                    )
+                }
             </Formik>
         </div>)
 };

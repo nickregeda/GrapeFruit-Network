@@ -9,7 +9,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import NavbarContainer from "./components/Navbar/NavbarContainer";
 import LoginContainer from "./components/Login/LoginContainer";
-import MyFriendsPageContainer from "./components/SubscriptionsPage/SubscriptionsPageContainer";
+import MyFriendsPageContainer from "./components/Subscriptions/SubscriptionsContainer";
 
 const App = (props) => {
     return (

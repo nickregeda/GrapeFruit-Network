@@ -2,7 +2,23 @@ import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
-import {Navigate} from "react-router-dom";
+import {Form, Field} from "formik";
+import {Formik} from "formik";
+import dialogsFormSchema from "../FormValidation/DialogsFormSchema";
+
+const DialogsForm = (props) => {
+    let maxMessageTextLength = 1000;
+    return (
+        <Form className={s.sendBlock}>
+            <Field name={'newMessage'}
+                   as={'textarea'}
+                   maxLength={maxMessageTextLength + 1} //for validation test
+                   placeholder='New message...'/>
+            <button disabled={props.newMessage.length > 1000 || !props.newMessage}>Send</button>
+            <div>{props.newMessage.length}/{maxMessageTextLength}</div>
+        </Form>
+    )
+}
 
 const Dialogs = (props) => {
     let state = props.dialogsPage;
@@ -11,13 +27,8 @@ const Dialogs = (props) => {
 
     let messagesElements = state.messages.map(message => <Message key={message.id} message={message.message}/>);
 
-    let onSendMessage = () => {
-        props.sendMessage();
-    }
-
-    let onMessageChange = (e) => {
-        let text = e.currentTarget.value;
-        props.updateNewMessageText(text);
+    let onSendMessage = (newMessage) => {
+        props.sendMessage(newMessage);
     }
 
     return (
@@ -28,11 +39,18 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <div className={s.sendBlock}>
-                <textarea onChange={onMessageChange} placeholder='New message...'
-                          value={state.newMessageText} /*{ref={newMessageElement}}*/></textarea>
-                <button onClick={onSendMessage}>Send</button>
-            </div>
+            <Formik
+                initialValues={{newMessage: ''}}
+                validationSchema={dialogsFormSchema}
+                onSubmit={(values, {resetForm}) => {
+                    onSendMessage(values.newMessage);
+                    resetForm({newMessage: ''});
+                }}
+            >
+                {({values}) => (
+                    <DialogsForm newMessage={values.newMessage}/>
+                )}
+            </Formik>
         </div>
     );
 }

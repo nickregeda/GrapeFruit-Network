@@ -1,19 +1,17 @@
 import React from "react";
-import SubscriptionsPage from "./SubscriptionsPage";
+import Subscriptions from "./Subscriptions";
 import {connect} from "react-redux";
 import {
     follow,
     unfollow,
     getFriends,
-    setCurrentPage,
     setCurrentFriendsPage,
-    setCurrentUsersPage
 } from "../../redux/usersReducer";
 import {compose} from "redux";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import {toggleIsNavSubsHide} from "../../redux/navbarReducer";
 
-class SubscriptionsPageContainer extends React.Component {
+class SubscriptionsContainer extends React.Component {
     componentDidMount() {
         this.props.getFriends(this.props.pageSize, this.props.currentFriendsPage);
         this.props.toggleIsNavSubsHide(true);
@@ -30,8 +28,8 @@ class SubscriptionsPageContainer extends React.Component {
 
     render() {
         return (
-            <SubscriptionsPage {...this.props} onPageChange={this.onPageChange} follow={this.props.follow}
-                               unfollow={this.props.unfollow}/>
+            <Subscriptions {...this.props} onPageChange={this.onPageChange} follow={this.props.follow}
+                           unfollow={this.props.unfollow}/>
         )
     }
 }
@@ -49,4 +47,4 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {getFriends, setCurrentFriendsPage, follow, unfollow, toggleIsNavSubsHide}),
     withAuthRedirect
-)(SubscriptionsPageContainer);
+)(SubscriptionsContainer);

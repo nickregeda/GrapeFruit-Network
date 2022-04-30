@@ -6,7 +6,6 @@ const SET_CURRENT_FRIENDS_PAGE = 'SET_CURRENT_FRIENDS_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const SET_FRIENDS = 'SET_FRIENDS';
 const SET_TOTAL_FRIENDS_COUNT = 'SET_TOTAL_FRIENDS_COUNT';
-// const SET_NAVBAR_FRIENDS = 'SET_NAVBAR_FRIENDS';
 
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS';
@@ -22,7 +21,6 @@ let initialState = {
     isFetching: true,
     followingInProgress: [],
     friends: [],
-    // navbarFriends: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -37,11 +35,6 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 friends: action.friends,
             }
-        // case SET_NAVBAR_FRIENDS:
-        //     return {
-        //         ...state,
-        //         navbarFriends: action.friends
-        //     }
         case SET_CURRENT_USERS_PAGE:
             return {
                 ...state,
@@ -75,15 +68,10 @@ const usersReducer = (state = initialState, action) => {
                 friends: state.friends.map(f => {
                     if (f.id === action.userID) {
                         return {...f, followed: !f.followed}
-                        //удалить из массива (в памяти остаются данные из сервера, что были взяты при рендере компонеты, данные на сервере поменялись, но стейт еще не запросил измененные данные, поэтому стейт не изменился и компонента не рендерится заново )
                     } else {
                         return f;
                     }
                 }),
-                //     friends: state.friends.some(f => f.id === action.userID) ?
-                //         state.friends.filter(f => f.id !== action.userID)
-                //         :
-                //         [...state.friends, state.users.find(u => u.id === action.userID)],
             }
         case TOGGLE_IS_FETCHING:
             return {
@@ -109,7 +97,6 @@ export const setCurrentFriendsPage = (page) => ({type: SET_CURRENT_FRIENDS_PAGE,
 export const setTotalUsersCount = (usersCount) => ({type: SET_TOTAL_USERS_COUNT, usersCount,});
 
 export const setFriends = (friends) => ({type: SET_FRIENDS, friends});
-// export const setNavbarFriends = (friends) => ({type: SET_NAVBAR_FRIENDS, friends});
 export const setTotalFriendsCount = (totalCount) => ({type: SET_TOTAL_FRIENDS_COUNT, totalCount});
 
 export const toggleFollowUser = (userID) => ({type: TOGGLE_FOLLOW, userID,});
@@ -140,16 +127,6 @@ export const getFriends = (pageSize, currentPage) => {
         )
     }
 }
-// export const getNavbarFriends = () => {
-//     return (dispatch) => {
-//         usersAPI.getFriends(9, 1).then(
-//             data => {
-//                 debugger
-//                 dispatch(setNavbarFriends(data.items))
-//             }
-//         )
-//     }
-// }
 
 export const unfollow = (userId) => {
     return (dispatch) => {
